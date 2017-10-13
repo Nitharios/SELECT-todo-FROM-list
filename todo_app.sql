@@ -17,7 +17,7 @@ CREATE TABLE tasks (
   title         varchar(255)        NOT NULL,
   description   text,
   created_at    timestamp           NOT NULL   DEFAULT now(),
-  update_at     timestamp,
+  updated_at     timestamp,
   completed     boolean             NOT NULL   DEFAULT false
 );
 -- remove column completed
@@ -26,7 +26,48 @@ CREATE TABLE tasks (
 ALTER TABLE tasks
   DROP COLUMN completed,
   ADD COLUMN completed_at timestamp NULL DEFAULT NULL,
-  ALTER COLUMN update_at SET NOT NULL,
-  ALTER COLUMN update_at SET DEFAULT now();
+  ALTER COLUMN updated_at SET NOT NULL,
+  ALTER COLUMN updated_at SET DEFAULT now();
 
--- create a new task
+-- create a new task, by only setting values (not defining which columns)
+  -- `id = default value`  
+  -- `title = 'Study SQL'`  
+  -- `description = 'Complete this exercise'`  
+  -- `created_at = now()`  
+  -- `updated_at = now()`  
+  -- `completed_at = NULL`
+INSERT INTO tasks VALUES(default, 'Study SQL', 'Complete this exercise', now(), now(), NULL);
+-- create a new task  
+  -- `title = 'Study PostgreSQL'`  
+  -- `description = 'Read all the documentation'`
+
+ -- select all the titles of tasks that are not yet completed
+
+ -- update the task with a title of `'Study SQL'` to be completed as of now
+ 
+ -- select all titles and descriptions of tasks that are not yet completed
+ 
+ -- select all fields of every task sorted by creation date in descending order
+ 
+ -- create a new task  
+ --  `title = 'mistake 1'`  
+ --  `description = 'a test entry'`  
+ 
+ -- create a new task  
+ --  `title = 'mistake 2'`  
+ --  `description = 'another test entry'`  
+ 
+ -- create a new task  
+ --  `title = 'third mistake'`  
+ --  `description = 'another test entry'`  
+ 
+ -- select title fields of all tasks with a title that includes the word `'mistake'`
+ 
+ -- delete the task that has a title of `mistake 1`
+ 
+ -- select title and description fields of all tasks with a title that includes the word `'mistake'`
+ 
+ -- delete all tasks that includes the word `'mistake'` in the title
+ 
+ -- select all fields of all tasks sorted by `title` in ascending order
+
