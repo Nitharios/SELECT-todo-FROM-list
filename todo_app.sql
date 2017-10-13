@@ -47,32 +47,47 @@ SELECT title
   FROM tasks
   WHERE completed_at IS NULL;
  -- update the task with a title of `'Study SQL'` to be completed as of now
- UPDATE tasks
+UPDATE tasks
   SET completed_at = now()
   WHERE title = 'Study SQL';
  -- select all titles and descriptions of tasks that are not yet completed
- 
+SELECT title, description
+  FROM tasks
+  WHERE completed_at IS NULL;
  -- select all fields of every task sorted by creation date in descending order
- 
+SELECT *
+  FROM tasks
+  ORDER BY created_at DESC;
  -- create a new task  
  --  `title = 'mistake 1'`  
  --  `description = 'a test entry'`  
- 
+INSERT INTO tasks
+  VALUES(default, 'mistake 1', 'a test entry'); 
  -- create a new task  
  --  `title = 'mistake 2'`  
  --  `description = 'another test entry'`  
- 
+INSERT INTO tasks
+  VALUES(default, 'mistake 2', 'another test entry');
  -- create a new task  
  --  `title = 'third mistake'`  
  --  `description = 'another test entry'`  
- 
+INSERT INTO tasks
+  VALUES(default, 'third mistake', 'another test entry');
  -- select title fields of all tasks with a title that includes the word `'mistake'`
- 
+SELECT title
+  FROM tasks
+  WHERE title LIKE '%mistake%';
  -- delete the task that has a title of `mistake 1`
- 
+DELETE FROM tasks
+  WHERE title = 'mistake 1';
  -- select title and description fields of all tasks with a title that includes the word `'mistake'`
- 
+SELECT title, description
+  FROM tasks
+  WHERE title LIKE '%mistake%';
  -- delete all tasks that includes the word `'mistake'` in the title
- 
+DELETE FROM tasks
+  WHERE title LIKE '%mistake%';
  -- select all fields of all tasks sorted by `title` in ascending order
-
+SELECT *
+  FROM tasks
+  ORDER BY title;
