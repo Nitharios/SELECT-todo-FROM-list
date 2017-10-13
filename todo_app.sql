@@ -28,7 +28,6 @@ ALTER TABLE tasks
   ADD COLUMN completed_at timestamp NULL DEFAULT NULL,
   ALTER COLUMN updated_at SET NOT NULL,
   ALTER COLUMN updated_at SET DEFAULT now();
-
 -- create a new task, by only setting values (not defining which columns)
   -- `id = default value`  
   -- `title = 'Study SQL'`  
@@ -48,7 +47,9 @@ SELECT title
   FROM tasks
   WHERE completed_at IS NULL;
  -- update the task with a title of `'Study SQL'` to be completed as of now
- 
+ UPDATE tasks
+  SET completed_at = now()
+  WHERE title = 'Study SQL';
  -- select all titles and descriptions of tasks that are not yet completed
  
  -- select all fields of every task sorted by creation date in descending order
